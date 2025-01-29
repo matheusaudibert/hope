@@ -1,0 +1,22 @@
+O interpretador Hope deste pacote foi escrito por Marcos Alfaro 
+a partir do código-fonte escrito pelo Professor Ross Paterson. In-
+felizmente o Marcos não disponibilizou o código-fonte. Tentei en-
+trar em contato por duas vezes em momentos diferentes e não obtive 
+sucesso. Talvez o Marcos Alfaro esteja incomunicável. Se alguém ti-
+ver a fonte desta versão e quiser contribuir será muito bem-vindo.
+
+O interpretador Hope distribuído é composto de dois arquivos, sen-
+do: "hope.exe" como o kernel da linguagem e "Standard.hop" como a 
+biblioteca padrão contendo recursos operacionais importantes da 
+linguagem. Para o ambiente funcionar os dois arquivos devem estar 
+presentes no mesmo diretório. 
+
+O arquivo "Standard.hop" original escrito por Ross Paterson é su-
+ficiente para uso do ambiente, mas seu funcionamento no interpreta-
+dor codificado por Marcos Alfaro apresenta pequenas diferenças da 
+versão POSIX. Desta forma, criei um arquivo "Standard.hop" alterna-
+tivo que busca mitigar as diferenças entre as duas plataformas além 
+de implementar algumas funcionalidades comuns e encontradas em ou-
+tras linguagens de programação.
+
+Site Marcos Alfaro: http://hopelang.blogspot.com/.

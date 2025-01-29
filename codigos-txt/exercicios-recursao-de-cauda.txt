@@ -1,0 +1,87 @@
+uses recursao;
+
+dec contaDigitos : num -> num;
+--- contaDigitos n <= if n mod 10 > 1 then contaDigitos (n div 10) + 1 else 0;
+
+dec somaDigitos : num -> num;
+--- somaDigitos 0 <= 0;
+--- somaDigitos n <= n mod 10 + somaDigitos (n div 10);
+
+dec mediaDigitos : num -> num;
+--- mediaDigitos n <= somaDigitos n / contaDigitos n;
+
+dec collatz : num -> num;
+--- collatz 1 <= 1;
+--- collatz n <= if abs n mod 2 = 0 then collatz (abs n div 2) else collatz (abs n * 3 + 1);
+
+dec calc : num -> num;
+--- calc 0 <= 0;
+--- calc n <= 1.5 + calc (n - 1) / 2;
+
+dec exp : num # num -> num;
+--- exp (x, 0) <= 1;
+--- exp (x, n) <= x * exp (x, n - 1);
+
+dec somaFaixa : num # num -> num;
+--- somaFaixa (n, m) <= if n < m then 0 else if n = m then m else m + somaFaixa (m, n - 1);
+
+dec dec2bin : num -> num;
+--- dec2bin 0 <= 0;
+--- dec2bin n <= 10 * dec2bin (n div 2) + n mod 2;
+
+dec sucessor : num -> num;
+--- sucessor n <= n + 1;
+
+dec antecessor : num -> num;
+--- antecessor n <= n - 1;
+
+dec minhaSoma : num # num -> num;
+--- minhaSoma (0, b) <= b;
+--- minhaSoma (a, 0) <= a;
+--- minhaSoma (0, 0) <= 0;
+--- minhaSoma (a, b) <= minhaSoma (sucessor a, antecessor b);
+
+dec produto : num # num -> num;
+--- produto (0, 0) <= 0;
+--- produto (0, y) <= 0;
+--- produto (x, 0) <= 0;
+--- produto (x, y) <= x + produto (x, y - 1);
+
+dec fatbase : num # num -> num;
+--- fatbase (0, x) <= x;
+--- fatbase (n, x) <= fatbase (n - 1, n * x);
+
+dec fat2 : num -> num;
+--- fat2 n <= fatbase (n, 1);
+
+dec fbs : num # num # num -> num;
+--- fbs (0, anter, atual) <= anter;
+--- fbs (1, anter, atual) <= atual;
+--- fbs (2, anter, atual) <= atual + anter;
+--- fbs (n, anter, atual) <= fbs (n - 1, atual, anter + atual);
+
+dec fib2 : num -> num;
+--- fib2 n <= fbs (n, 0, 1);
+
+dec par2 : num -> truval;
+--- par2 0 <= true;
+--- par2 n <= not (par2 (n - 1));
+
+dec base2_1 : num -> num;
+--- base2_1 0 <= 1;
+--- base2_1 n <= 2 * base2_1 (n - 1);
+
+dec base2x : num # num -> num;
+--- base2x (0, x) <= x;
+--- base2x (n, x) <= base2x (n - 1, x * 2);
+
+dec base2_2 : num -> num;
+--- base2_2 n <= base2x (n, 1);
+
+dec vezesbase : num # num # num -> num;
+--- vezesbase (k, 0, x) <= 0;
+--- vezesbase (0, 0, x) <= 1;
+--- vezesbase (k, n, x) <= if n mod 10 = k then vezesbase (k, n div 10, x + 1) else vezesbase (k, n div 10, x);
+
+dec quantasVezes : num # num -> num;
+--- quantasVezes (k, n) <= vezesbase (k, n, 0);

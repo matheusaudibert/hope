@@ -1,0 +1,34 @@
+! sets (an example of an abstract data type)
+
+abstype set pos;
+
+infixr	&	: 5;
+infixr	U	: 4;
+
+dec	empty	: set alpha;
+dec	&	: alpha # set alpha -> set alpha;
+dec	U	: set alpha # set alpha -> set alpha;
+dec	choose	: set alpha -> alpha # set alpha;
+dec	card	: set alpha -> num;
+
+private;
+
+uses list;
+
+type set alpha == list alpha;
+
+--- empty <= [];
+
+dec dropfirst : alpha # list alpha -> list alpha;
+--- dropfirst(x, []) <= [];
+--- dropfirst(x, y::ys) <= if x = y then ys else y::dropfirst(x, ys);
+
+--- x & s <= x::dropfirst(x, s);
+
+--- s1 U s2 <= foldr(s1, (&)) s2;
+
+--- choose(x::xs) <= (x, xs);
+
+--- card <= length;
+
+--- set f <= foldr(empty, (&)) o map f;
